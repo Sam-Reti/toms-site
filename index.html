@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tom McKinney Vocal Studios | World-Class Voice Coaching in Houston, TX</title>
+  <meta name="description" content="World-class vocal coaching from Tom & Colleen McKinney. Over 7,000 students trained including Beyoncé, Demi Lovato, and more. Houston, TX.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #CC2D2D;
+      --gold-light: #E04040;
+      --dark: #FFFFFF;
+      --dark-surface: #F5F5F5;
+      --dark-card: #FFFFFF;
+      --dark-border: #E0E0E0;
+      --text: #1A1A1A;
+      --text-muted: #666;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Inter', -apple-system, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.25rem clamp(1rem, 3vw, 2.5rem);
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .4s, backdrop-filter .4s, padding .4s;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(20px);
+      padding: .75rem clamp(1rem, 3vw, 2.5rem);
+      box-shadow: 0 1px 0 rgba(0,0,0,.1);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: .02em;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .nav-logo-img {
+      height: 70px;
+      width: auto;
+    }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: color .3s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold) !important;
+      color: #fff !important;
+      padding: .5rem 1.25rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; }
+    .hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      flex-direction: column; gap: 5px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px; background: var(--text);
+      transition: transform .3s, opacity .3s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      position: relative;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(204,45,45,.06) 0%, transparent 60%),
+        var(--dark);
+      padding: 7rem 2rem 2rem;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0v60M0 30h60' stroke='%23000000' stroke-opacity='.03' stroke-width='.5'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-content { position: relative; max-width: 900px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .75rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      border: 1px solid rgba(201,168,76,.3); padding: .5rem 1.25rem; border-radius: 50px;
+      position: relative; z-index: 1;
+    }
+    .hero-badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .3; }
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.75rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .875rem 2rem;
+      font-size: .9rem; font-weight: 600;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all .3s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--gold); color: #fff;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--dark-border);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 3rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--dark-border);
+    }
+    .hero-stat strong {
+      display: block;
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--gold);
+    }
+    .hero-stat span {
+      font-size: .8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: .75rem; font-weight: 600; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: .75rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 600px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--dark-surface); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+    .about-image {
+      aspect-ratio: 4/5;
+      background:
+        linear-gradient(135deg, rgba(201,168,76,.15), rgba(201,168,76,.05));
+      border-radius: 8px;
+      border: 1px solid var(--dark-border);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .about-image-icon {
+      font-size: 4rem; opacity: .3;
+    }
+    .about-image::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, var(--dark-surface) 0%, transparent 30%);
+    }
+    .about-text h3 {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+    .about-highlights {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .about-highlight {
+      padding: 1.25rem 1rem;
+      background: var(--dark-card);
+      border-radius: 6px;
+      border: 1px solid var(--dark-border);
+      text-align: center;
+    }
+    .about-highlight strong {
+      display: block; color: var(--gold);
+      font-family: var(--serif); font-size: 1.5rem;
+    }
+    .about-highlight span {
+      font-size: .8rem; color: var(--text-muted);
+    }
+
+    /* ── METHOD ── */
+    .method-card {
+      margin-top: 3rem;
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      border-radius: 12px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .method-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .method-card h3 {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      margin-bottom: .5rem;
+    }
+    .method-card h3 em { color: var(--gold); font-style: italic; }
+    .method-card > p {
+      color: var(--text-muted); max-width: 700px; margin-bottom: 2rem; line-height: 1.8;
+    }
+    .method-pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .pillar {
+      padding: 1.5rem;
+      background: var(--dark);
+      border-radius: 8px;
+      border: 1px solid var(--dark-border);
+      transition: border-color .3s;
+    }
+    .pillar:hover { border-color: var(--gold); }
+    .pillar-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: rgba(201,168,76,.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.2rem; margin-bottom: 1rem;
+    }
+    .pillar h4 { margin-bottom: .5rem; font-size: 1rem; }
+    .pillar p { font-size: .875rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── ARTISTS ── */
+    .artists { background: var(--dark-surface); text-align: center; }
+    .artists-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .artist-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 8px;
+      transition: border-color .3s, transform .3s;
+      overflow: hidden;
+    }
+    .artist-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .artist-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background-size: cover;
+      background-position: center center;
+      background-color: var(--dark-border);
+      position: relative;
+    }
+    .artist-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, #fff 0%, transparent 18%);
+    }
+    .artist-info {
+      padding: .75rem 1rem 1rem;
+      margin-top: 0;
+      position: relative; z-index: 1;
+    }
+    .artist-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: .15rem;
+    }
+    .artist-note {
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .service-card {
+      padding: 2.5rem 2rem;
+      background: var(--dark-surface);
+      border: 1px solid var(--dark-border);
+      border-radius: 10px;
+      transition: border-color .3s;
+    }
+    .service-card:hover { border-color: var(--gold); }
+    .service-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: rgba(201,168,76,.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.4rem; margin-bottom: 1.25rem;
+    }
+    .service-card h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem; margin-bottom: .75rem;
+    }
+    .service-card p { color: var(--text-muted); font-size: .95rem; line-height: 1.7; }
+    .service-card ul {
+      list-style: none; margin-top: 1rem;
+    }
+    .service-card li {
+      padding: .4rem 0;
+      font-size: .9rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .service-card li:last-child { border-bottom: none; }
+    .service-card li::before {
+      content: '\2713'; color: var(--gold); margin-right: .5rem; font-weight: 700;
+    }
+
+    /* ── TESTIMONIAL BANNER ── */
+    .testimonial-banner {
+      background:
+        linear-gradient(135deg, rgba(204,45,45,.04), transparent),
+        var(--dark-surface);
+      text-align: center;
+      padding: 5rem 2rem;
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+    }
+    .testimonial-banner blockquote {
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-style: italic;
+      max-width: 750px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+      color: var(--text);
+    }
+    .testimonial-banner cite {
+      font-style: normal;
+      font-size: .85rem;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: .05em;
+    }
+    .quote-mark {
+      font-family: var(--serif);
+      font-size: 4rem;
+      color: var(--gold);
+      opacity: .3;
+      line-height: 1;
+      display: block;
+      margin-bottom: .5rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--dark-surface); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+    .contact-info h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .contact-item {
+      display: flex; gap: 1rem; margin-bottom: 1.5rem;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: rgba(201,168,76,.1);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-item strong { display: block; font-size: .95rem; margin-bottom: .15rem; }
+    .contact-item span, .contact-item a {
+      font-size: .9rem; color: var(--text-muted); text-decoration: none;
+    }
+    .contact-item a:hover { color: var(--gold); }
+    .contact-form {
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .form-row { display: flex; gap: 1rem; }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      padding: .875rem 1rem;
+      background: var(--dark);
+      border: 1px solid var(--dark-border);
+      border-radius: 6px;
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: .9rem;
+      transition: border-color .3s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+    .contact-form select option { background: var(--dark-card); }
+
+    /* ── SOCIAL ── */
+    .social-links {
+      display: flex; gap: 1rem; margin-top: 1.5rem;
+    }
+    .social-link {
+      width: 40px; height: 40px; border-radius: 8px;
+      border: 1px solid var(--dark-border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all .3s;
+    }
+    .social-link:hover {
+      border-color: var(--gold); color: var(--gold);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      border-top: 1px solid var(--dark-border);
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* Fallback: ensure content visible if JS fails */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity: 1; transform: none; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: rgba(255,255,255,.95);
+        backdrop-filter: blur(20px);
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+      }
+      .hamburger { display: flex; }
+      .hero-stats { flex-direction: column; gap: 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-highlights { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { flex-direction: column; }
+      .artists-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo"><img src="toms logo.png" alt="Tom McKinney Vocal Studios" class="nav-logo-img"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#method">Method</a></li>
+      <li><a href="#artists">Artists</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Now Accepting New Students</div>
+      <h1>The Voice Behind<br>the <em>World's Greatest</em><br>Artists</h1>
+      <p class="hero-sub">Tom &amp; Colleen McKinney have spent over four decades shaping the voices of Grammy winners, chart-topping artists, and passionate singers of every level.</p>
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Start Your Journey &rarr;</a>
+        <a href="#method" class="btn btn-outline">Discover the Method</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>7,000+</strong>
+          <span>Students Trained</span>
+        </div>
+        <div class="hero-stat">
+          <strong>40+</strong>
+          <span>Years Experience</span>
+        </div>
+        <div class="hero-stat">
+          <strong>All Genres</strong>
+          <span>& Skill Levels</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-label fade-in">About Tom &amp; Colleen</div>
+      <h2 class="section-title fade-in">A Legacy of Excellence<br>in Vocal Training</h2>
+      <div class="about-grid">
+        <div class="about-image fade-in">
+          <img src="tom & colleen.png" alt="Tom and Colleen McKinney" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:8px;">
+        </div>
+        <div class="about-text fade-in">
+          <h3>From the Stage to the Studio</h3>
+          <p>Tom McKinney holds a Bachelor's Degree in Musical Education and Theatre and won the prestigious Metropolitan Opera competition in 1971. After a celebrated career as a performer, he dedicated himself to teaching the art and science of the voice.</p>
+          <p>Trained under the legendary Seth Riggs (vocal coach to Michael Jackson and Stevie Wonder) and his mentor Keith Davis of New York City, Tom developed his own groundbreaking approach to vocal technique.</p>
+          <p>Together with his wife Colleen &mdash; who brings over 30 years of professional performance experience &mdash; they have built one of the most respected vocal studios in the country, serving as the New Talent Development Vocal Technique Instructors for Music World Entertainment.</p>
+        </div>
+      </div>
+      <div class="about-highlights fade-in">
+        <div class="about-highlight">
+          <strong>20+</strong>
+          <span>Years Teaching</span>
+        </div>
+        <div class="about-highlight">
+          <strong>Met Opera</strong>
+          <span>Competition Winner</span>
+        </div>
+        <div class="about-highlight">
+          <strong>Music World</strong>
+          <span>Vocal Instructor</span>
+        </div>
+        <div class="about-highlight">
+          <strong>All Ages</strong>
+          <span>10 through Adult</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section class="method" id="method">
+    <div class="container">
+      <div class="section-label fade-in">The Technique</div>
+      <h2 class="section-title fade-in">A Method That Changes Everything</h2>
+      <div class="method-card fade-in">
+        <h3>Sing With the <em>Ease of Speech</em>&trade;</h3>
+        <p>Tom McKinney's signature technique is built on a simple but transformative idea: singing should feel as natural and effortless as speaking. Since the method teaches <strong>how</strong> to sing rather than <strong>what</strong> to sing, it works across every genre of music.</p>
+        <div class="method-pillars">
+          <div class="pillar">
+            <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+            <h4>Expand Your Range</h4>
+            <p>Unlock notes you never thought possible by learning to use your full vocal instrument without strain.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            <h4>Build Stamina</h4>
+            <p>Develop the vocal endurance needed for long performances, recording sessions, and touring schedules.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7L12 16.4 5.7 21l2.3-7L2 9.4h7.6z"/></svg></div>
+            <h4>Clarity &amp; Tone</h4>
+            <p>Refine your unique sound with precision control over tone quality, volume, and articulation.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <h4>Vocal Health</h4>
+            <p>Eliminate vocal strain and disorders. Learn sustainable technique that protects your voice for a lifetime.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTABLE ARTISTS -->
+  <section class="artists" id="artists">
+    <div class="container">
+      <div class="section-label fade-in">Notable Artists</div>
+      <h2 class="section-title fade-in">Trusted by the Best in the Industry</h2>
+      <p class="section-desc fade-in" style="margin: 0 auto;">From Grammy-winning superstars to finalists on American Idol, X Factor, and The Voice &mdash; Tom's students have reached the highest levels of the music industry.</p>
+      <div class="artists-grid fade-in">
+        <div class="artist-card">
+          <div class="artist-img" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_%2810_of_118%29_%2852946364598%29_%28best_crop%29.jpg/400px-Beyonc%C3%A9_-_Tottenham_Hotspur_Stadium_-_1st_June_2023_%2810_of_118%29_%2852946364598%29_%28best_crop%29.jpg')"></div>
+          <div class="artist-info">
+            <div class="artist-name">Beyonc&eacute;</div>
+            <div class="artist-note">Grammy-Winning Artist</div>
+          </div>
+        </div>
+        <div class="artist-card">
+          <div class="artist-img" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Demi_Lovato_Interview_Feb_2020.png/400px-Demi_Lovato_Interview_Feb_2020.png')"></div>
+          <div class="artist-info">
+            <div class="artist-name">Demi Lovato</div>
+            <div class="artist-note">Platinum Recording Artist</div>
+          </div>
+        </div>
+        <div class="artist-card">
+          <div class="artist-img" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Solange_Knowles%2C_Bonnaroo_Music_and_Arts_Festival_2019_%28cropped%29.jpg/400px-Solange_Knowles%2C_Bonnaroo_Music_and_Arts_Festival_2019_%28cropped%29.jpg')"></div>
+          <div class="artist-info">
+            <div class="artist-name">Solange</div>
+            <div class="artist-note">Grammy-Winning Artist</div>
+          </div>
+        </div>
+        <div class="artist-card">
+          <div class="artist-img" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/ScottHoying-byPhilipRomano.jpg/400px-ScottHoying-byPhilipRomano.jpg')"></div>
+          <div class="artist-info">
+            <div class="artist-name">Scott Hoying</div>
+            <div class="artist-note">Pentatonix</div>
+          </div>
+        </div>
+        <div class="artist-card">
+          <div class="artist-img" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Mario_in_2024.png/400px-Mario_in_2024.png')"></div>
+          <div class="artist-info">
+            <div class="artist-name">Mario</div>
+            <div class="artist-note">R&amp;B Artist</div>
+          </div>
+        </div>
+        <div class="artist-card">
+          <div class="artist-img" style="background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Ray_J_2011.jpg/400px-Ray_J_2011.jpg')"></div>
+          <div class="artist-info">
+            <div class="artist-name">Ray J</div>
+            <div class="artist-note">Singer &amp; Entertainer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL BANNER -->
+  <div class="testimonial-banner">
+    <div class="container">
+      <div class="quote-mark">&ldquo;</div>
+      <blockquote>Tom doesn't just teach you to sing &mdash; he teaches you to discover what your voice is truly capable of.</blockquote>
+      <cite>&mdash; Former Student</cite>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-label fade-in">What We Offer</div>
+      <h2 class="section-title fade-in">Lessons &amp; Programs</h2>
+      <p class="section-desc fade-in">Whether you're a beginner finding your voice or a professional preparing for tour, we have a path for you.</p>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+          <h3>Private Voice Lessons</h3>
+          <p>One-on-one training with Tom or Colleen using the Ease of Speech technique. Tailored to your goals, genre, and skill level.</p>
+          <ul>
+            <li>In-person at Houston studio</li>
+            <li>Remote via video call</li>
+            <li>All genres and styles</li>
+            <li>Ages 10 through adult</li>
+          </ul>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><path d="M21 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+          <h3>Performance Coaching</h3>
+          <p>Go beyond vocal technique. Develop stage presence, confidence, and the ability to connect with an audience.</p>
+          <ul>
+            <li>Stage presence development</li>
+            <li>Showcase opportunities</li>
+            <li>Live performance prep</li>
+            <li>Audition coaching</li>
+          </ul>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3>Group Seminars</h3>
+          <p>Learn alongside other singers in a supportive group environment. Perfect for building confidence and community.</p>
+          <ul>
+            <li>Small group sessions</li>
+            <li>Open mic nights</li>
+            <li>Live showcases</li>
+            <li>Industry networking</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-label fade-in">Get in Touch</div>
+      <h2 class="section-title fade-in">Begin Your Vocal Journey</h2>
+      <p class="section-desc fade-in">Ready to transform your voice? Reach out to schedule your first lesson or ask any questions.</p>
+      <div class="contact-grid">
+        <div class="contact-info fade-in">
+          <h3>Contact Information</h3>
+          <div class="contact-item">
+            <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div>
+              <strong>Studio Location</strong>
+              <span>2947 Hollister Rd, Bldg L, Rm #103<br>Houston, TX 77080</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div>
+              <strong>Phone</strong>
+              <a href="tel:2144993458">(214) 499-3458</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:tom@tommckinney.net">tom@tommckinney.net</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <div>
+              <strong>Also Serving</strong>
+              <span>Spring / Woodlands / Conroe area</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://www.instagram.com/tommckinneyvocalstudio/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.facebook.com/TomMcKinneysVocalStudio/" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3V2z"/></svg>
+            </a>
+          </div>
+        </div>
+        <form class="contact-form fade-in" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <input type="text" placeholder="First Name" required>
+            <input type="text" placeholder="Last Name" required>
+          </div>
+          <input type="email" placeholder="Email Address" required>
+          <input type="tel" placeholder="Phone Number">
+          <select>
+            <option value="" disabled selected>I'm interested in...</option>
+            <option>Private Voice Lessons</option>
+            <option>Performance Coaching</option>
+            <option>Group Seminars</option>
+            <option>Remote / Online Lessons</option>
+            <option>Other / General Inquiry</option>
+          </select>
+          <textarea placeholder="Tell us about yourself and your goals..."></textarea>
+          <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">Send Message &rarr;</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Tom McKinney Vocal Studios. All rights reserved. &nbsp;|&nbsp; Houston, TX &nbsp;|&nbsp; <a href="tel:2144993458">(214) 499-3458</a></p>
+  </footer>
+
+  <script>
+    // Scroll-based nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px 50px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Fallback: make all visible after short delay
+    setTimeout(() => {
+      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    }, 2000);
+
+    // Form handler
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Message Sent!';
+      btn.style.background = '#2ECC71';
+      setTimeout(() => {
+        btn.innerHTML = 'Send Message &rarr;';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
